@@ -1,0 +1,45 @@
+<div *ngIf="!isLogged()">
+  <nav class="navbar navbar-dark bg-primary">
+      <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+          <h3>Network Of Giving</h3>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav" >
+              <a class="nav-item nav-link" href="/charities">Charities</a>
+              <a class="nav-item nav-link" href="/login">Log in</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+            </div>
+          </div>
+        </nav>
+  </nav>
+</div>
+<app-user-home *ngIf="isLogged()"></app-user-home>  
+<div class="container-fluid">
+
+      <div class="card" style="width: 18rem;">
+        <img [src]="imagePath" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{charity.name}}</h5>
+          <h6>Description:</h6>
+          <p class="card-text">{{charity.description}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <p>Maximum number of participants:</p>
+          <li class="list-group-item">{{ charity.maxNumberOfParticipants }}</li>
+          <p>Budget required:</p>
+
+          <li class="list-group-item">{{ charity.budgetRequired }}</li>
+          <p>Donated money so far:</p>
+          <li class="list-group-item">{{ charity.donatedMoney }}</li>
+          <p>Charity creator: </p>
+          <li class="list-group-item">{{ charity.username }}</li>
+
+        </ul>
+        <div class="card-body">
+          <button type="button" class="btn btn-primary"*ngIf="isLogged() && isCreator" (click)="edit(charity.id)">Edit</button>
+          <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" *ngIf="isLogged()" (click)="donate()">Donate</button>
+          <button type="button" class="btn btn-danger" *ngIf="isLogged()  && isCreator" (click)="deleteCharity(charity.id)">Delete</button>
+        </div>
+      </div>
+
+
+      

@@ -1,0 +1,48 @@
+<div *ngIf="!isLogged()" >
+    <nav class="navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <h3>Network Of Giving</h3>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav" >
+                <a class="nav-item nav-link" href="/charities">Charities</a>
+                <a class="nav-item nav-link" href="/login">Log in</a>
+                <a class="nav-item nav-link" href="/register">Register</a>
+              </div>
+            </div>
+          </nav>
+    </nav>
+</div>
+
+<div *ngIf="isLogged()">
+    <nav class="navbar navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <h3>Network Of Giving</h3>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/charities">Charities</a>
+                <a class="nav-item nav-link" href="/create">Create charity</a>
+                <a class="nav-item nav-link" href="/profile">View profile</a>
+                <a class="nav-item nav-link" href="/logout">Log out</a>
+    
+              </div>
+            </div>
+          </nav>
+        
+    </nav>    
+</div>  
+  <div class="container-fluid">
+    <div><h1>List Of All Charities</h1></div>
+      <div class="row">
+            <div class="col-lg-3 d-flex align-items-stretch" *ngFor="let charity of charities">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <img [src]="charity.thumbnail" class="card-img-top">
+
+                        <h5 class="card-title">{{charity.name}}</h5>
+                        <p class="card-text">{{charity.description}}</p>
+                        <button type="button" class="btn btn-primary" (click)="navigate(charity.id)">View Charity</button>
+                    </div>
+                </div>
+          </div>
+      </div>
+  </div>

@@ -1,0 +1,33 @@
+<app-user-home></app-user-home>
+  <div class="container-fluid">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h6>Username</h6>
+        <h5 class="card-title">{{user.username}}</h5>
+        <h6>Name</h6>
+        <h5 class="card-text">{{user.name}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <h5 class="card-text">Age:</h5>
+        <li class="list-group-item">{{ user.age }}</li>
+        <h5 class="card-text">Gender:</h5>
+
+        <li class="list-group-item">{{ user.gender }}</li>
+        <h5 class="card-text">Location:</h5>
+        <li class="list-group-item">{{ user.location }}</li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- <div class="row">
+      <div class="col-sm">
+        <button type="submit" class="btn btn-primary">Edit</button>
+        <button type="submit" class="btn btn-primary"(click)="donate()">Donate</button>
+        <button type="button" class="btn btn-danger" (click)="deleteCharity(charity.id)">Delete</button>
+      </div>
+    </div> -->
+
+
+</div>

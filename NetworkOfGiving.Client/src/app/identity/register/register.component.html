@@ -1,0 +1,90 @@
+<nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <h3>Network Of Giving</h3>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Go back</a>
+          </div>
+        </div>
+      </nav>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <h1>Register</h1>
+
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" formControlName="username">
+                </div>
+                <div *ngIf="username.touched && username.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <div *ngIf="username.errors?.minlength || username.errors?.maxlength" class="alert alert-danger">
+                    Username should be between 6 and 30 symbols
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+                <div *ngIf="password.errors?.minlength || password.errors?.maxlength" class="alert alert-danger">
+                    Password should be between 6 and 30 symbols
+                </div>
+                <div *ngIf="password.touched && password.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div *ngIf="name.errors?.minlength || name.errors?.maxlength" class="alert alert-danger">
+                    Name should be between 3 and 30 symbols
+                </div>
+                <div *ngIf="name.touched && name.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" class="form-control" formControlName="age" min="18" max="100">
+                </div>
+                <div *ngIf="age.touched && age.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <div *ngIf="registerForm.controls['age'].hasError('min')" class="alert alert-danger">
+                    Your age must be over 18!
+                </div>
+
+                <div *ngIf="registerForm.controls['age'].hasError('max')" class="alert alert-danger">
+                    Are you sure you entered your age correctly?
+                </div>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="male" value="MALE" formControlName="gender">
+                    <label class="form-check-label" for="male">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="female" value="FEMALE" formControlName="gender">
+                    <label class="form-check-label" for="female">Female</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="other" value="OTHER" formControlName="gender">
+                    <label class="form-check-label" for="other">Other</label>
+                  </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" class="form-control" formControlName="location">
+                </div>
+               
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

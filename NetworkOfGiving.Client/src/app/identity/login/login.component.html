@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <h3>Network Of Giving</h3>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/">Go back</a>
+          </div>
+        </div>
+      </nav>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <h1>Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" formControlName="username">
+                </div>
+                <div *ngIf="username.touched && username.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <div *ngIf="username.errors?.minlength || username.errors?.maxlength" class="alert alert-danger">
+                    Username should be between 6 and 30 symbols
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+                <div *ngIf="password.touched && password.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="navigate()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

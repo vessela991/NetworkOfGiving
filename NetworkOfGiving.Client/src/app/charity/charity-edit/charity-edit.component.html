@@ -1,0 +1,52 @@
+<app-user-home></app-user-home>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form [formGroup]="charityEditForm" (ngSubmit)="edit()"> 
+                <h1>Edit charity form</h1>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div *ngIf="name.touched && name.errors?.required" class="alert alert-danger">
+                    This field is required!
+                </div>
+                <div *ngIf="name.errors?.minlength || name.errors?.maxlength" class="alert alert-danger">
+                    Charity name should be between 6 and 30 symbols
+                </div>
+                    <img class="img-thumbnail"  [src]="img" alt="">
+                  <div class="custom-file mb-3">
+                    
+                    <input type="file" class="custom-file-input" (change)="onFileChanged($event)" formControlName="thumbnail" id="validatedCustomFile" required>
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                  </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" rows="3" formControlName="description"></textarea>
+                  </div>
+
+                <div *ngIf="description.errors?.minlength || description.errors?.maxlength" class="alert alert-danger">
+                    Charity description should be between 6 and 300 symbols
+                </div>
+                
+                <div class="form-group">
+                    <label>Donation required</label>
+                    <input type="number" class="form-control" formControlName="budgetRequired">
+                </div>
+                
+                <div class="form-group">
+                    <label>Participants required</label>
+                    <input type="number" class="form-control" formControlName="numberOfParticipants">
+                </div>
+
+                <div *ngIf="(numberOfParticipants.touched && numberOfParticipants.errors?.required)||(budgetRequired.touched && budgetRequired.errors?.required)" class="alert alert-danger">
+                    You should either set number of participants or budget required!
+                </div>
+                <button type="Create" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
